@@ -23,6 +23,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-center">
           Convex + Next.js + Clerk
         </h1>
+        
         <Authenticated>
           <Content />
         </Authenticated>
@@ -53,6 +54,9 @@ function SignInForm() {
 }
 
 function Content() {
+  const messages = useQuery(api.messages.get)
+  console.log(messages)
+
   const { viewer, numbers } =
     useQuery(api.myFunctions.listNumbers, {
       count: 10,
@@ -69,12 +73,26 @@ function Content() {
 
   return (
     <div className="flex flex-col gap-8 max-w-lg mx-auto">
-      <p>Welcome {viewer ?? "Anonymous"}!</p>
+      {/* <p>Welcome {viewer ?? "Anonymous"}!</p> */}
+      <p>
+        Hello
+      </p>
+      <p>
+        Hello
+        
+      </p>
+      {messages?.map(({_id, message}) => (
+        <div key={_id}>
+          hello
+          {message}
+        </div>
+      ))}
       <p>
         Click the button below and open this page in another window - this data
         is persisted in the Convex cloud database!
       </p>
-      <p>
+
+      {/* <p>
         <button
           className="bg-foreground text-background text-sm px-4 py-2 rounded-md"
           onClick={() => {
@@ -83,13 +101,13 @@ function Content() {
         >
           Add a random number
         </button>
-      </p>
-      <p>
+      </p> */}
+      {/* <p>
         Numbers:{" "}
         {numbers?.length === 0
           ? "Click the button!"
           : (numbers?.join(", ") ?? "...")}
-      </p>
+      </p> */}
       <p>
         Edit{" "}
         <code className="text-sm font-bold font-mono bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded-md">
