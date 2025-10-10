@@ -54,7 +54,7 @@ function SignInForm() {
 }
 
 function Content() {
-  const messages = useQuery(api.messages.get)
+  const messages = useQuery(api.messages.get, { messagesGroupId: 1 })
   console.log(messages)
 
   const { viewer, numbers } =
@@ -81,8 +81,8 @@ function Content() {
         Hello
         
       </p>
-      {messages?.map(({_id, message}) => (
-        <div key={_id}>
+      {messages?.map(({message}, index) => (
+        <div key={index}>
           hello
           {message}
         </div>

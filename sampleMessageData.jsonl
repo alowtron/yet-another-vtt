@@ -1,0 +1,3 @@
+{"messagesGroupId": 3, "messages": [{"message": "Hello!", "userName": "Alice", "userId": 101, "timeSent": 1718000000}, {"message": "Hi Alice!", "userName": "Bob", "userId": 102, "timeSent": 1718000005}]}
+{"messagesGroupId": 2, "messages": [{"message": "Welcome to the group.", "userName": "Charlie", "userId": 103, "timeSent": 1718000100}]}
+{"messagesGroupId": 1, "messages": [{"message": "How are you?", "userName": "Alice", "userId": 101, "timeSent": 1718000010}]}

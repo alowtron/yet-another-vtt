@@ -10,9 +10,14 @@ export default defineSchema({
     value: v.number(),
   }),
   messages: defineTable({
-    message: v.string(),
-    userName: v.string(),
-    userId: v.number(),
-    timeSent: v.number()
+    messagesGroupId: v.number(),
+    messages: v.array(
+      v.object({
+        message: v.string(),
+        userName: v.string(),
+        userId: v.number(),
+        timeSent: v.number()
+      })
+    )
   })
 });
