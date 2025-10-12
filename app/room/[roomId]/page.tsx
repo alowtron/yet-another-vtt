@@ -1,5 +1,5 @@
-import { notFound } from 'next/navigation'
-
+import './room.css'
+import RightSideBar from '@/components/room/rightSideBar'
 interface RoomProps {
   params: {
     roomId: string
@@ -8,10 +8,16 @@ interface RoomProps {
 
 export default async function Room( { params }: RoomProps ) {
   const { roomId } = await params
-  console.log(roomId)
   return (
-    <div>
-      Hello, welcome to roomId: { roomId }
+    <div className="mainGrid">
+      <div>
+        Hello
+        Hello, welcome to roomId: { roomId }
+      </div>
+      
+      <RightSideBar>
+      </RightSideBar>
+      
     </div>
   )
 }

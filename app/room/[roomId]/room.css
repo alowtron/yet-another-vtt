@@ -1,0 +1,12 @@
+.mainGrid {
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: auto 16rem;
+}
+
+.rightSideBar {
+  background-color: darkgrey;
+  display: grid;
+  grid-template-rows: 2rem auto;
+}
+
