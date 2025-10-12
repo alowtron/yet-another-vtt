@@ -6,8 +6,8 @@ interface RoomProps {
   }
 }
 
-export default function Room( { params }: RoomProps ) {
-  const { roomId } = params
+export default async function Room( { params }: RoomProps ) {
+  const { roomId } = await params
   console.log(roomId)
   return (
     <div>
