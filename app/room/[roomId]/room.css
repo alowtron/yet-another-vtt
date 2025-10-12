@@ -5,8 +5,17 @@
 }
 
 .rightSideBar {
+  overflow-x: hidden;
   background-color: darkgrey;
+  width: 100%;
+}
+
+.rightSideBarGrid { 
   display: grid;
   grid-template-rows: 2rem auto;
 }
 
+.mainGrid.collapsed .rightSideBar {
+  width: 0;
+  padding: 0;
+}

@@ -1,6 +1,6 @@
 export default function RightSideBar() {
   return (
-    <div className="rightSideBar">
+    <div className="rightSideBarGrid">
       <div>
         navBar
       </div>
