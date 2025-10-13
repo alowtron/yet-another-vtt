@@ -1,8 +1,15 @@
 export default function RightSideBar() {
+  
   return (
     <div className="rightSideBarGrid">
-      <div>
-        navBar
+      <div className="rightSideBarNavGrid">
+        <div className="cursorPointer material-symbols-outlined">
+          chat
+        </div>
+        <div className="cursorPointer material-symbols-outlined">
+          settings
+        </div>
+
       </div>
       <div>
         Message area?
