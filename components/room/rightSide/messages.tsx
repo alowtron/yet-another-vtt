@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import TextareaAutosize from 'react-textarea-autosize'
-import { useState } from "react"
+import { useState, FormEvent, KeyboardEvent } from "react"
 
 interface messagesProps {
   roomId: string
@@ -16,10 +16,12 @@ export default function Messages({
 
   const send = useMutation(api.messages.send)
 
-  async function submitMessage(e: React.FormEvent) {
+  async function submitMessage(e: FormEvent) {
     e.preventDefault()
     sendMessage(messageInput, 'temp', 120, Date.now())
+    setMessageInput('')
   }
+
   async function sendMessage(message: string, userName: string, userId: number, timeSent: number) {
     await send({
       messagesGroupId: Number(roomId),
@@ -30,7 +32,12 @@ export default function Messages({
     })
   }
 
-
+  async function onKeyDown(e: KeyboardEvent) {
+    if (e.key == "Enter" && !e.shiftKey) {
+      e.preventDefault()
+      submitMessage(e)
+    }
+  }
 
   return (
     <div>
@@ -42,6 +49,7 @@ export default function Messages({
       
       <form onSubmit={submitMessage} >
         <TextareaAutosize
+          onKeyDown={onKeyDown}
           value={messageInput}
           onChange={(e) => setMessageInput(e.target.value)}
         >
