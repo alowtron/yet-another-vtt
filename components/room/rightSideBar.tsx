@@ -1,4 +1,6 @@
 import { useState } from "react"
+import Messages from "./rightSide/messages"
+
 
 interface rightSideBarProps {
   roomId: string
@@ -7,6 +9,7 @@ interface rightSideBarProps {
 export default function RightSideBar({
   roomId
 }: rightSideBarProps) {
+  
   const [partToShow, setPartToShow] = useState<string> ('messages')
   return (
     <div className="rightSideBarGrid">
@@ -21,9 +24,10 @@ export default function RightSideBar({
       </div>
       <div>
         {partToShow == 'messages' ? (
-          <div>
-            messages {roomId}
-          </div>
+          <Messages
+            roomId={roomId}
+          >
+          </Messages>
         ) : (
           <div>
             Not Selected
