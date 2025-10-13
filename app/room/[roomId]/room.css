@@ -1,7 +1,11 @@
 .mainGrid {
   height: 100dvh;
   display: grid;
-  grid-template-columns: auto 16rem;
+  grid-template-columns: 1fr 16rem;
+}
+
+.mainGrid > div {
+  position: relative;
 }
 
 .rightSideBar {
@@ -18,4 +22,15 @@
 .mainGrid.collapsed .rightSideBar {
   width: 0;
   padding: 0;
+}
+
+.mainGrid.collapsed {
+  grid-template-columns: 1fr;
+}
+
+.rightSideToggler {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
 }

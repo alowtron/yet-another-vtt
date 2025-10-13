@@ -25,9 +25,11 @@ export default function Room( { params }: RoomProps ) {
   return (
     <div className="mainGrid">
       <div>
-        Hello
+        
         Hello, welcome to roomId: { roomId }
-        <button onClick={toggleRightSide}>toggle</button>
+        <div onClick={toggleRightSide} className="rightSideToggler material-symbols-outlined">
+          menu
+        </div>
       </div>
 
       {/* <div></div> */}
@@ -35,7 +37,8 @@ export default function Room( { params }: RoomProps ) {
         <RightSideBar>
         </RightSideBar>
       </div>
-      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
       
     </div>
   )
