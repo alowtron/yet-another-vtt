@@ -29,6 +29,8 @@ export default function Room( { params }: RoomProps ) {
 
 
   return (
+    <div>
+    {aloudInRoom == true ? (
     <div className="mainGrid">
       <div>
         Hello, welcome to roomId: { roomId }
@@ -44,5 +46,11 @@ export default function Room( { params }: RoomProps ) {
       </div>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </div>
+    ) : (
+    <div>
+      You are not aloud in this room
+    </div>
+    )}
+    </div>  
   )
 }
