@@ -19,5 +19,10 @@ export default defineSchema({
         timeSent: v.number()
       })
     )
+  }),
+  rooms: defineTable({
+    roomId: v.number(),
+    secretRoomId: v.number(), // what is passed in to actually do stuff
+    users: v.array(v.string()) // check against this to make sure user has permission
   })
-});
+})
