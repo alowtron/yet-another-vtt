@@ -41,9 +41,13 @@ export default function Messages({
 
   return (
     <div>
-      {messages?.map(({message}, index) => (
+      {messages?.map(({message, userName}, index) => (
         <div key={index}>
+          <div>
+          {userName}:
+          </div>
           {message}
+          <br></br>
         </div>
       ))}
       
