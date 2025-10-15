@@ -54,7 +54,7 @@ function SignInForm() {
 }
 
 function Content() {
-  const messages = useQuery(api.messages.get, { messagesGroupId: 1 })
+  const messages = useQuery(api.messages.get, { roomId: 1, userId: 'hello' })
   console.log(messages)
 
   const { viewer, numbers } =
