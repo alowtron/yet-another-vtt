@@ -3,11 +3,13 @@ import Messages from "./rightSide/messages"
 
 
 interface rightSideBarProps {
-  roomId: string
+  roomId: string,
+  userId: string
 }
 
 export default function RightSideBar({
-  roomId
+  roomId,
+  userId
 }: rightSideBarProps) {
   
   const [partToShow, setPartToShow] = useState<string> ('messages')
@@ -26,6 +28,7 @@ export default function RightSideBar({
         {partToShow == 'messages' ? (
           <Messages
             roomId={roomId}
+            userId={userId}
           >
           </Messages>
         ) : (

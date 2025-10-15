@@ -10,12 +10,12 @@ export default defineSchema({
     value: v.number(),
   }),
   messages: defineTable({
-    messagesGroupId: v.number(),
+    roomId: v.number(),
     messages: v.array(
       v.object({
         message: v.string(),
         userName: v.string(),
-        userId: v.number(),
+        userId: v.string(),
         timeSent: v.number()
       })
     )

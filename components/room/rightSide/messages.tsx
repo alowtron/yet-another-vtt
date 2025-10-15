@@ -4,13 +4,15 @@ import TextareaAutosize from 'react-textarea-autosize'
 import { useState, FormEvent, KeyboardEvent } from "react"
 
 interface messagesProps {
-  roomId: string
+  roomId: string,
+  userId: string
 }
 
 export default function Messages({
-  roomId
+  roomId,
+  userId
 }: messagesProps) {
-  const messages = useQuery(api.messages.get, { messagesGroupId: Number(roomId)})
+  const messages = useQuery(api.messages.get, { roomId: Number(roomId), userId: userId})
   const [messageInput, setMessageInput] = useState<string> ('')
   console.log(messages)
 
@@ -18,13 +20,13 @@ export default function Messages({
 
   async function submitMessage(e: FormEvent) {
     e.preventDefault()
-    sendMessage(messageInput, 'temp', 120, Date.now())
+    sendMessage(messageInput, 'temp', userId, Date.now())
     setMessageInput('')
   }
 
-  async function sendMessage(message: string, userName: string, userId: number, timeSent: number) {
+  async function sendMessage(message: string, userName: string, userId: string, timeSent: number) {
     await send({
-      messagesGroupId: Number(roomId),
+      roomId: Number(roomId),
       message,
       userName,
       userId,

@@ -41,6 +41,7 @@ export default function Room( { params }: RoomProps ) {
       <div className="rightSideBar">
         <RightSideBar
           roomId={roomId}
+          userId={userId || ''}
         >
         </RightSideBar>
       </div>
