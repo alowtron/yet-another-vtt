@@ -10,7 +10,8 @@ export default defineSchema({
     creatureId: v.number(),
     userId: v.string(),
     creatureType: v.string(),
-    
+    creatureName: v.string(),
+    creatureInfo: v.object({})
   }),
   messages: defineTable({
     roomId: v.number(),
