@@ -3,10 +3,7 @@
 import {
   Authenticated,
   Unauthenticated,
-  useMutation,
-  useQuery,
 } from "convex/react";
-import { api } from "../convex/_generated/api";
 import Link from "next/link";
 import { SignUpButton } from "@clerk/nextjs";
 import { SignInButton } from "@clerk/nextjs";
@@ -19,11 +16,7 @@ export default function Home() {
         Convex + Next.js + Clerk
         <UserButton />
       </header>
-      <main className="p-8 flex flex-col gap-8">
-        <h1 className="text-4xl font-bold text-center">
-          Convex + Next.js + Clerk
-        </h1>
-        
+      <main className="p-8 flex flex-col gap-8">        
         <Authenticated>
           <Content />
         </Authenticated>
@@ -54,30 +47,13 @@ function SignInForm() {
 }
 
 function Content() {
-  const messages = useQuery(api.messages.get, { roomId: 1, userId: 'hello' })
-  console.log(messages)
 
-  const { viewer, numbers } =
-    useQuery(api.myFunctions.listNumbers, {
-      count: 10,
-    }) ?? {};
-
-  if (viewer === undefined || numbers === undefined) {
-    return (
-      <div className="mx-auto">
-        <p>loading... (consider a loading skeleton)</p>
-      </div>
-    );
-  }
 
   return (
     <div className="flex flex-col gap-8 max-w-lg mx-auto">
 
-      {messages?.map(({message}, index) => (
-        <div key={index}>
-          {message}
-        </div>
-      ))}
+      Create and look at creatures and player characters.
+      <Link href="/creatures">Creatures</Link>
     </div>
   );
 }
