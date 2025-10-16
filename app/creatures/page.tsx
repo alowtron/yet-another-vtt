@@ -3,6 +3,7 @@
 import { useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { useAuth } from "@clerk/clerk-react"
+import ListCreatures from "@/components/creatures/listCreatures"
 
 export default function Creatures() {
   const addCreature = useMutation(api.creatures.addCreature)
@@ -23,6 +24,9 @@ export default function Creatures() {
     <div>
       Creature page
       <button onClick={() => addCreatureFunction()}>Add creature</button>
+      <ListCreatures>
+        
+      </ListCreatures>
     </div>
   )
 }

@@ -19,3 +19,17 @@ export const addCreature = mutation({
     })
   }
 })
+
+export const getUserCreatureList = query({
+  args: {
+    userId: v.string()
+  },
+  handler: async (ctx, args) => {
+    const list = await ctx.db
+      .query("creatures")
+      .filter((q) => q.eq(q.field("userId"), args.userId))
+      .take(1000)
+
+    return list
+  }
+})
