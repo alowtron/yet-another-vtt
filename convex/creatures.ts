@@ -33,3 +33,18 @@ export const getUserCreatureList = query({
     return list
   }
 })
+
+export const getUserCreature = query({
+  args: {
+    userId: v.string(),
+    _id: v.string()
+  },
+  handler: async (ctx, args) => {
+    const creature = await ctx.db
+      .query("creatures")
+      .filter((q) => q.eq(q.field("_id"), args._id))
+      .filter((q) => q.eq(q.field("userId"), args.userId))
+      .first()
+    return creature
+  }
+})
