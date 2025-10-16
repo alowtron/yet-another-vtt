@@ -7,7 +7,7 @@ import { v } from "convex/values";
 // The schema provides more precise TypeScript types.
 export default defineSchema({
   creatures: defineTable({
-    creatureId: v.number(),
+    // creatureId: v.number(),
     userId: v.string(),
     creatureType: v.string(),
     creatureName: v.string(),
