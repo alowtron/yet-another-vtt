@@ -46,11 +46,14 @@ export default function CreaturePage( { params }: CreatureId ) {
   
   return (
     <div className="mainPageContainer">
-      <CreatureName
-        creatureName={creature?.creatureName || 'Loading Name'}
-        onUpdate={(newName) => handleUpdateCreature(newName = newName)}
-      >
+      <div >
+        <CreatureName
+          creatureName={creature?.creatureName || 'Loading Name'}
+          onUpdate={(newName) => handleUpdateCreature(newName = newName)}
+        >
       </CreatureName>
+      </div>
+      
       {/* This is a creature page test test test test test test test test test test test test test test test test test test */}
       {creature?.creatureType == 'yet_another_ttrpg' ? (
         <YetAnotherTTRPG

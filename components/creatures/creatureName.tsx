@@ -23,11 +23,12 @@ export default function CreatureName({
 
   const nameString: string = 'Name: '
   return (
-    <div>
+    <div className="">
     <label htmlFor="name">
       {nameString}
     </label>
     <input
+      className="underline"
       id="name"
       value={name}
       onChange={(e) => setName(e.target.value)}
