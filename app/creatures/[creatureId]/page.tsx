@@ -5,6 +5,8 @@ import YetAnotherTTRPG from "@/components/creatures/creatureSheets/yetAnotherTTR
 import { use } from "react"
 import { useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
+import './creature.css'
+import CreatureName from "@/components/creatures/creatureName"
 
 interface CreatureId {
   params: Promise<{
@@ -18,10 +20,15 @@ export default function CreaturePage( { params }: CreatureId ) {
   const { creatureId } = param
   
   const creature = useQuery(api.creatures.getUserCreature, { userId: String(userId),  _id: creatureId })
+  console.log(creature)
   
   return (
-    <div>
-      This is a creature page
+    <div className="mainPageContainer">
+      <CreatureName
+        creatureName={creature?.creatureName || ''}
+      >
+      </CreatureName>
+      {/* This is a creature page test test test test test test test test test test test test test test test test test test */}
       {creature?.creatureType == 'yet_another_ttrpg' ? (
         <YetAnotherTTRPG
           creature={creature || Object}
