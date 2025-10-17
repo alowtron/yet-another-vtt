@@ -48,3 +48,30 @@ export const getUserCreature = query({
     return creature
   }
 })
+
+export const updateUserCreature = mutation({
+  args: {
+     _id: v.string(), 
+     creatureName: v.string(), 
+     userId: v.string(),
+     creatureInfo: v.object({})
+  },
+  handler: async ( ctx, args) => {
+    const creature = await ctx.db
+      .query("creatures")
+      .filter((q) => q.eq(q.field("_id"), args._id))
+      .filter((q) => q.eq(q.field("userId"), args.userId))
+      .first()
+    if (!creature) {
+      throw new Error("creature not found")
+    }
+    if (creature.userId != args.userId) {
+      throw new Error("userId no matched")
+    }
+    await ctx.db
+      .patch(creature._id, {
+        creatureName: args.creatureName,
+        creatureInfo: args.creatureInfo
+      })     
+  }
+})
