@@ -8,7 +8,7 @@ export const addCreature = mutation({
     userId: v.string(),
     creatureType: v.string(),
     creatureName: v.string(),
-    creatureInfo: v.object({})
+    creatureInfo: v.any()
   },
   handler: async (ctx, args) => {
     await ctx.db.insert("creatures", {
@@ -54,7 +54,7 @@ export const updateUserCreature = mutation({
      _id: v.string(), 
      creatureName: v.string(), 
      userId: v.string(),
-     creatureInfo: v.object({})
+     creatureInfo: v.any()
   },
   handler: async ( ctx, args) => {
     const creature = await ctx.db

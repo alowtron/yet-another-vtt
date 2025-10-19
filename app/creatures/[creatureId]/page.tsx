@@ -23,7 +23,7 @@ export default function CreaturePage( { params }: CreatureId ) {
   const updateCreature = useMutation(api.creatures.updateUserCreature)
   console.log(creature)
 
-  async function handleUpdateCreature(newName = creature?.creatureName, info = creature?.creatureInfo) {
+  async function handleUpdateCreature({newName = creature?.creatureName, info = creature?.creatureInfo}) {
     if (
       !creature?._id ||
       !newName ||
@@ -50,7 +50,7 @@ export default function CreaturePage( { params }: CreatureId ) {
       <div >
         <CreatureName
           creatureName={creature?.creatureName || 'Loading Name'}
-          onUpdate={(newName) => handleUpdateCreature(newName = newName)}
+          onUpdate={(newName) => handleUpdateCreature({newName: newName})}
         >
       </CreatureName>
       </div>
@@ -58,8 +58,9 @@ export default function CreaturePage( { params }: CreatureId ) {
       {/* This is a creature page test test test test test test test test test test test test test test test test test test */}
       {creature?.creatureType == 'yet_another_ttrpg' ? (
         <YetAnotherTTRPG
-          creature={creature || Object}
+          creatureInfo={creature.creatureInfo}
           userId={userId || ''}
+          onUpdate={(info) => handleUpdateCreature({info: info})}
         >
         </YetAnotherTTRPG>
       ) : (

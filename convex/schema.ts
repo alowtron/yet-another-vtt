@@ -11,7 +11,7 @@ export default defineSchema({
     userId: v.string(),
     creatureType: v.string(),
     creatureName: v.string(),
-    creatureInfo: v.object({})
+    creatureInfo: v.any()
   }),
   messages: defineTable({
     roomId: v.number(),
