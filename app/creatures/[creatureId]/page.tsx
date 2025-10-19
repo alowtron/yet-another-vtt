@@ -23,11 +23,12 @@ export default function CreaturePage( { params }: CreatureId ) {
   const updateCreature = useMutation(api.creatures.updateUserCreature)
   console.log(creature)
 
-  async function handleUpdateCreature(newName = creature?.creatureName) {
+  async function handleUpdateCreature(newName = creature?.creatureName, info = creature?.creatureInfo) {
     if (
       !creature?._id ||
       !newName ||
-      !userId
+      !userId ||
+      !info
     ) {
       return
     }
@@ -36,7 +37,7 @@ export default function CreaturePage( { params }: CreatureId ) {
         _id: creatureId,
         creatureName: newName,
         userId: userId,
-        creatureInfo: {}
+        creatureInfo: info
       })
     } catch {
       console.error("Failed to update creature")

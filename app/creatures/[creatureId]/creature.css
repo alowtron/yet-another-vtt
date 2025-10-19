@@ -13,3 +13,14 @@
   border-top: 0;
   width: min-content;
 }
+
+
+
+
+
+/* Grid Stuff goes below */
+
+.creatureGrid {
+  display: grid;
+  height: 100dvh;
+}
