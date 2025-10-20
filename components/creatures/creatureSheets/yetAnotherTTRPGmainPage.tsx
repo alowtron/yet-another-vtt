@@ -83,25 +83,39 @@ export default function YetAnotherTTRPG({
           >
           </input>
         </div>
-        {/* <div>
-          <label htmlFor="currentHP">
-            Current Hit Points: 
-          </label>
-          {info.currentHP}
-        </div> */}
       </div>
       <div className="statGrid">
-        <div>
-          {info.stats.physical}
+        <div className="eachStatGrid">
+          <div className="center">
+            Physical
+          </div>
+          <div className="center">
+            {info.stats.physical}
+          </div>
         </div>
-        <div>
-          {info.stats.fortitude}
+        <div className="eachStatGrid">
+          <div className="center">
+            Fortitude
+          </div>
+          <div className="center">
+            {info.stats.fortitude}
+          </div>
         </div>
-        <div>
-          {info.stats.intellect}
+        <div className="eachStatGrid">
+          <div className="center">
+            Intellect
+          </div>
+          <div className="center">
+            {info.stats.intellect}
+          </div>
         </div>
-        <div>
-          {info.stats.charisma}
+        <div className="eachStatGrid">
+          <div className="center">
+            Charisma
+          </div>
+          <div className="center">
+            {info.stats.charisma}
+          </div>
         </div>
       </div>
       <button

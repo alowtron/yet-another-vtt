@@ -26,3 +26,18 @@
  display: grid;
  grid-template-columns: auto auto auto auto;
 }
+
+.eachStatGrid {
+  display: grid;
+  grid-template-rows: auto auto;
+  padding: 1rem;
+  margin: 1rem;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1rem;
+}
+
+.center {
+  display: flex;
+  margin: auto;
+}
