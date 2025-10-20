@@ -1,3 +1,20 @@
 .test {
   background-color: aqua;
 }
+
+.mainGrid {
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+
+.hitPointGrid {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+
+
+.statGrid {
+ display: grid;
+ grid-template-columns: auto auto auto auto;
+}

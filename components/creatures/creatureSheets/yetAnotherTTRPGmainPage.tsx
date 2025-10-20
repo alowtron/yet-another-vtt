@@ -44,13 +44,49 @@ export default function YetAnotherTTRPG({
     }
   }
 
-  function tempAddInfo() {
-    
-  }
 
   return (
-    <div className="test">
+    <div className="mainGrid">
       Yet another ttrpg
+      <div className="hitPointGrid">
+        <div>
+          <label htmlFor="maxHP">
+            Max Hit Points: 
+          </label>
+          <input
+            id="maxHP"
+            value={info.maxHP}
+            onChange={(e) => 
+              setInfo((prev: object) => ({
+                ...prev,
+                maxHP: Number(e.target.value),
+              }))
+            }
+            onBlur={updateCreatureInfo}
+          >
+          </input>
+        </div>
+        <div>
+          <label htmlFor="currentHP">
+            Current Hit Points: 
+          </label>
+          {info.currentHP}
+        </div>
+      </div>
+      <div className="statGrid">
+        <div>
+          {info.stats.physical}
+        </div>
+        <div>
+          {info.stats.fortitude}
+        </div>
+        <div>
+          {info.stats.intellect}
+        </div>
+        <div>
+          {info.stats.charisma}
+        </div>
+      </div>
       <button
         onClick={updateCreatureInfo}
       >
