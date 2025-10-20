@@ -48,10 +48,29 @@ export default function YetAnotherTTRPG({
       } else {
         onUpdate(info)
       }
-      
     }
   }
 
+  function addSkill() {
+    setInfo((prev: {skills: any}) => ({
+      ...prev,
+      skills: [...prev.skills, {
+        name: 'temp',
+        actions: 3,
+        effect: "temp effect"
+      }]
+    }))
+  }
+
+  function addPassiveSkill() {
+    setInfo((prev: {passiveSkills: any}) => ({
+      ...prev,
+      passiveSkills: [...prev.passiveSkills, {
+        name: 'temp passive skill',
+        effect: 'temp passive skill effect'
+      }]
+    }))
+  }
 
   return (
     <div className="mainGrid">
@@ -132,6 +151,22 @@ export default function YetAnotherTTRPG({
           </div>
         </div>
       </div>
+      {info.skills.map(({name}: {name: string}, index: number) => (
+        <div key={index}>
+          {name }
+        </div>
+      ))}
+
+      <button
+        onClick={addSkill}
+      >
+        addSkill
+      </button>
+      <button
+        onClick={addPassiveSkill}
+      >
+        addPassiveSkill
+      </button>
       <button
         onClick={updateCreatureInfo}
       >
