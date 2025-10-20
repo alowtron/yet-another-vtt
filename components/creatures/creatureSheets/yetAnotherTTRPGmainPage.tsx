@@ -9,34 +9,42 @@ interface YetAnotherTTRPGProps {
   onUpdate: (info: object) => void
 }
 
+
+
 export default function YetAnotherTTRPG({
   creatureInfo,
   userId,
   onUpdate
 }: YetAnotherTTRPGProps) {
-  const [info, setInfo] = useState(creatureInfo)
+  const starterInfo = {
+    maxHP: 10,
+    currentHP: 10,
+    race: 'null',
+    level: 1,
+    skills: [],
+    passiveSkills: [],
+    stats: {
+      physical: 3,
+      fortitude: 3,
+      intellect: 3,
+      charisma: 3,
+    }
+  }
+  const [info, setInfo] = useState(() => {
+    return creatureInfo && Object.keys(creatureInfo).length > 0 ? creatureInfo : starterInfo
+  })
 
   console.log(info)
   useEffect(() => {
-    setInfo(creatureInfo)
+    if (creatureInfo && Object.keys(creatureInfo).length > 0) {
+      setInfo(creatureInfo)
+    }
   }, [creatureInfo])
 
   function updateCreatureInfo() {
     if (info != creatureInfo) {
       if (info == null || Object.keys(info).length == 0) {
-        onUpdate({
-          maxHP: 10,
-          currentHP: 10,
-          race: 'input race here',
-          skills: [],
-          passiveSkills: [],
-          stats: {
-            physical: 3,
-            fortitude: 3,
-            intellect: 3,
-            charisma: 3,
-          }
-        })
+        onUpdate(starterInfo)
       } else {
         onUpdate(info)
       }
@@ -48,13 +56,12 @@ export default function YetAnotherTTRPG({
   return (
     <div className="mainGrid">
       Yet another ttrpg
-      <div className="hitPointGrid">
+      <div className="HPNameLevel">
         <div>
           <label htmlFor="hp">
             Hit Points:
           </label>
           <input
-            // type="number"
             className="number"
             id="hp"
             value={info.maxHP}
@@ -69,7 +76,6 @@ export default function YetAnotherTTRPG({
           </input>
           /
           <input
-            // type="number"
             className="number"
             id="hp"
             value={info.currentHP}
@@ -82,6 +88,14 @@ export default function YetAnotherTTRPG({
             onBlur={updateCreatureInfo}
           >
           </input>
+        </div>
+        <div>
+          Race:
+          {info.race}
+        </div>
+        <div>
+          Level:
+          {info.level}
         </div>
       </div>
       <div className="statGrid">

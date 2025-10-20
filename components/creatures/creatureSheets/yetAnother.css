@@ -7,10 +7,10 @@
   grid-template-rows: auto auto auto;
 }
 
-/* .hitPointGrid {
+.HPNameLevel {
   display: grid;
-  grid-template-columns: auto auto;
-} */
+  grid-template-columns: auto auto auto;
+}
 
 .number {
   border: none;
@@ -30,8 +30,8 @@
 .eachStatGrid {
   display: grid;
   grid-template-rows: auto auto;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0.75rem;
+  margin: 0.25rem;
   border-style: solid;
   border-width: 1px;
   border-radius: 1rem;
