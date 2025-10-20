@@ -50,11 +50,13 @@ export default function YetAnotherTTRPG({
       Yet another ttrpg
       <div className="hitPointGrid">
         <div>
-          <label htmlFor="maxHP">
-            Max Hit Points: 
+          <label htmlFor="hp">
+            Hit Points:
           </label>
           <input
-            id="maxHP"
+            // type="number"
+            className="number"
+            id="hp"
             value={info.maxHP}
             onChange={(e) => 
               setInfo((prev: object) => ({
@@ -65,13 +67,28 @@ export default function YetAnotherTTRPG({
             onBlur={updateCreatureInfo}
           >
           </input>
+          /
+          <input
+            // type="number"
+            className="number"
+            id="hp"
+            value={info.currentHP}
+            onChange={(e) => 
+              setInfo((prev: object) => ({
+                ...prev,
+                currentHP: Number(e.target.value),
+              }))
+            }
+            onBlur={updateCreatureInfo}
+          >
+          </input>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="currentHP">
             Current Hit Points: 
           </label>
           {info.currentHP}
-        </div>
+        </div> */}
       </div>
       <div className="statGrid">
         <div>
