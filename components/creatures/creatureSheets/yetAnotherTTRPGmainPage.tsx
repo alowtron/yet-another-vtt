@@ -23,7 +23,24 @@ export default function YetAnotherTTRPG({
 
   function updateCreatureInfo() {
     if (info != creatureInfo) {
-      onUpdate(info)
+      if (info == null || Object.keys(info).length == 0) {
+        onUpdate({
+          maxHP: 10,
+          currentHP: 10,
+          race: 'input race here',
+          skills: [],
+          passiveSkills: [],
+          stats: {
+            physical: 3,
+            fortitude: 3,
+            intellect: 3,
+            charisma: 3,
+          }
+        })
+      } else {
+        onUpdate(info)
+      }
+      
     }
   }
 
@@ -34,10 +51,6 @@ export default function YetAnotherTTRPG({
   return (
     <div className="test">
       Yet another ttrpg
-      <button
-        onClick={() => setInfo({"objectaafd fdaldf asdf ": 'adsfalksdflaksjdf;lasdf'})}
-      >create</button>
-
       <button
         onClick={updateCreatureInfo}
       >
