@@ -151,9 +151,48 @@ export default function YetAnotherTTRPG({
           </div>
         </div>
       </div>
-      {info.skills.map(({name}: {name: string}, index: number) => (
-        <div key={index}>
-          {name }
+      <h2>
+        Skills
+      </h2>
+      <div>
+      {info.skills.map(({name, actions, effect}: {name: string, actions: number, effect: string}, index: number) => (
+      <div key={index}>
+        Skill: {name}
+        <div>
+          Actions: {actions}
+        </div>
+        <div>
+          Effect: {effect}
+        </div>
+        {index != info.skills.length - 1 ? (
+          <div>
+            <br></br>
+          </div>
+        ) : (
+          <div>
+          </div>
+        )}
+      </div>
+      ))}
+      </div>
+      <h2>
+        Passive Skills
+      </h2>
+      {info.passiveSkills.map(({name, effect}: {name: string, effect: string}, index: number) => (
+        <div>
+          Skill: {name}
+          <div>
+            Effect: {effect}
+          </div>
+          {index != info.passiveSkills.length - 1 ? (
+            <div>
+              <br></br>
+            </div>
+          ) : (
+            <div>
+
+            </div>
+          )}
         </div>
       ))}
 
