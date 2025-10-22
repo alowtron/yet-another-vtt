@@ -34,6 +34,7 @@ export default function YetAnotherTTRPG({
   const [info, setInfo] = useState(() => {
     return creatureInfo && Object.keys(creatureInfo).length > 0 ? creatureInfo : starterInfo
   })
+  const [showAddSkill, setShowAddSkill]  = useState(true)
 
   console.log(info)
   useEffect(() => {
@@ -52,14 +53,15 @@ export default function YetAnotherTTRPG({
     }
   }
 
-  function addSkill() {
+  function addSkill(skill: object) {
     setInfo((prev: {skills: any}) => ({
       ...prev,
-      skills: [...prev.skills, {
-        name: 'temp',
-        actions: 3,
-        effect: "temp effect"
-      }]
+      skills: [...prev.skills,  skill]
+      // skills: [...prev.skills, {
+      //   name: 'temp',
+      //   actions: 3,
+      //   effect: "temp effect"
+      // }]
     }))
   }
 
@@ -178,14 +180,16 @@ export default function YetAnotherTTRPG({
       </div>
       <br></br>
       <AddSkill
-        onUpdate={() => null}
+        show={showAddSkill}
+        onShowUpdate={(e) => setShowAddSkill(e)}
+        onUpdate={(skill) => addSkill(skill)}
       ></AddSkill>
 
       <h2>
         Passive Skills
       </h2>
       {info.passiveSkills.map(({name, effect}: {name: string, effect: string}, index: number) => (
-        <div>
+        <div key={index}>
           Skill: {name}
           <div>
             Effect: {effect}

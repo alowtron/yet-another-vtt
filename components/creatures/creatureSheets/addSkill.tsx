@@ -1,4 +1,6 @@
 interface AddSkillProps {
+  show: boolean,
+  onShowUpdate: (newShow: boolean) => void,
   onUpdate: (skill: object) => void
 }
 
@@ -21,12 +23,16 @@ const skills = [
 ]
 
 export default function AddSkill({
+  show,
+  onShowUpdate,
   onUpdate
 }: AddSkillProps){
 
   function addSkill(index: number) {
+    onShowUpdate(false)
     onUpdate(skills[index])
   }
+  if (!show) return null
   return (
     <div>
       {skills.map(({name, actions, effect}, index) => (
@@ -36,6 +42,12 @@ export default function AddSkill({
           Actions: {actions}
           <br></br>
           Effect: {effect}
+          <br></br>
+          <button 
+            onClick={() => addSkill(index)}
+          >
+            Add Skill
+          </button>
           {index != skills.length - 1 ? (
             <div>
               <br></br>
@@ -46,6 +58,8 @@ export default function AddSkill({
           )}
         </div>
       ))}
+
+      
     </div>
   )
 }
