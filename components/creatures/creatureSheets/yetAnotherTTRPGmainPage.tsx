@@ -35,13 +35,19 @@ export default function YetAnotherTTRPG({
     return creatureInfo && Object.keys(creatureInfo).length > 0 ? creatureInfo : starterInfo
   })
   const [showAddSkill, setShowAddSkill]  = useState(true)
-
+ 
   console.log(info)
   useEffect(() => {
-    if (creatureInfo && Object.keys(creatureInfo).length > 0) {
+    if (creatureInfo && Object.keys(creatureInfo).length > 0 && creatureInfo != info) {
       setInfo(creatureInfo)
     }
   }, [creatureInfo])
+
+  useEffect(() => {
+    if(creatureInfo != info) {
+      updateCreatureInfo()
+    }
+  }, [info])
 
   function updateCreatureInfo() {
     if (info != creatureInfo) {
@@ -49,7 +55,9 @@ export default function YetAnotherTTRPG({
         onUpdate(starterInfo)
       } else {
         onUpdate(info)
+        
       }
+      
     }
   }
 
