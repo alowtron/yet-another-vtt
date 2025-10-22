@@ -2,6 +2,7 @@ import { api } from "@/convex/_generated/api"
 import { useQuery } from "convex/react"
 import './yetAnother.css' // not sure if this import is working
 import { useEffect, useState } from "react"
+import AddSkill from "./addSkill"
 
 interface YetAnotherTTRPGProps {
   creatureInfo: any,
@@ -175,6 +176,11 @@ export default function YetAnotherTTRPG({
       </div>
       ))}
       </div>
+      <br></br>
+      <AddSkill
+        onUpdate={() => null}
+      ></AddSkill>
+
       <h2>
         Passive Skills
       </h2>
@@ -195,7 +201,7 @@ export default function YetAnotherTTRPG({
           )}
         </div>
       ))}
-
+      
       <button
         onClick={addSkill}
       >
