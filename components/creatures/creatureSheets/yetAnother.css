@@ -22,6 +22,11 @@
   box-sizing: content-box;
 }
 
+.number.one {
+  min-width: 0.5rem;
+  max-width: 0.5rem;
+}
+
 .statGrid {
  display: grid;
  grid-template-columns: auto auto auto auto;

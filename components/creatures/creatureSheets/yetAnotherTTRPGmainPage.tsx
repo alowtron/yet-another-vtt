@@ -125,7 +125,19 @@ export default function YetAnotherTTRPG({
         </div>
         <div>
           Level:
-          {info.level}
+          <input
+            className="number"
+            id="hp"
+            value={info.level}
+            onChange={(e) => 
+              setInfo((prev: object) => ({
+                ...prev,
+                level: Number(e.target.value),
+              }))
+            }
+            onBlur={updateCreatureInfo}
+          >
+          </input>
         </div>
       </div>
       <div className="statGrid">
@@ -134,7 +146,23 @@ export default function YetAnotherTTRPG({
             Physical
           </div>
           <div className="center">
-            {info.stats.physical}
+            <input
+            className="number one"
+            id="hp"
+            value={info.stats.physical}
+            onChange={(e) => 
+              setInfo((prev: any) => ({
+                ...prev,
+                stats: {
+                  ...prev.stats,
+                  physical: Number(e.target.value),
+                }
+                
+              }))
+            }
+            onBlur={updateCreatureInfo}
+          >
+          </input>
           </div>
         </div>
         <div className="eachStatGrid">
@@ -142,7 +170,22 @@ export default function YetAnotherTTRPG({
             Fortitude
           </div>
           <div className="center">
-            {info.stats.fortitude}
+          <input
+            className="number one"
+            id="hp"
+            value={info.stats.fortitude}
+            onChange={(e) => 
+              setInfo((prev: any) => ({
+                ...prev,
+                stats: {
+                  ...prev.stats,
+                  fortitude: Number(e.target.value),
+                }
+              }))
+            }
+            onBlur={updateCreatureInfo}
+          >
+          </input>
           </div>
         </div>
         <div className="eachStatGrid">
@@ -150,7 +193,22 @@ export default function YetAnotherTTRPG({
             Intellect
           </div>
           <div className="center">
-            {info.stats.intellect}
+          <input
+            className="number one"
+            id="hp"
+            value={info.stats.intellect}
+            onChange={(e) => 
+              setInfo((prev: any) => ({
+                ...prev,
+                stats: {
+                  ...prev.stats,
+                  intellect: Number(e.target.value),
+                }
+              }))
+            }
+            onBlur={updateCreatureInfo}
+          >
+          </input>
           </div>
         </div>
         <div className="eachStatGrid">
@@ -158,7 +216,22 @@ export default function YetAnotherTTRPG({
             Charisma
           </div>
           <div className="center">
-            {info.stats.charisma}
+          <input
+            className="number one"
+            id="hp"
+            value={info.stats.charisma}
+            onChange={(e) => 
+              setInfo((prev: any) => ({
+                ...prev,
+                stats: {
+                  ...prev.stats,
+                  charisma: Number(e.target.value),
+                }
+              }))
+            }
+            onBlur={updateCreatureInfo}
+          >
+          </input>
           </div>
         </div>
       </div>
