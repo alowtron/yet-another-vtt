@@ -5,6 +5,7 @@ import DrawFrame from "./drawFrame"
 
 export default function MainMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const animationRef = useRef(0)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0})
 
   useEffect(() => {
@@ -23,17 +24,26 @@ export default function MainMap() {
 
   useEffect(() => {
     const canvas = canvasRef.current
+
     if (!canvas) return
     canvas.width = dimensions.width
     canvas.height = dimensions.height
 
     const ctx = canvas.getContext('2d')
     if (!ctx) return
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    ctx.fillStyle = '#0070f3'
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-    DrawFrame(canvas, ctx, dimensions)
+    const animate = () => {
+      DrawFrame(canvas, ctx, dimensions)
+      animationRef.current = requestAnimationFrame(animate)
+    }
+
+    animationRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
+    }
   }, [dimensions])
 
   return (
