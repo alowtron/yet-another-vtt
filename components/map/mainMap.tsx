@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from "react"
+import DrawFrame from "./drawFrame"
 
 export default function MainMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -32,6 +33,7 @@ export default function MainMap() {
 
     ctx.fillStyle = '#0070f3'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
+    DrawFrame(canvas, ctx, dimensions)
   }, [dimensions])
 
   return (
