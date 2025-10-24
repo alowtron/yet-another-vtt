@@ -9,6 +9,8 @@ export default function MainMap() {
   const animationRef = useRef(0)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0})
   const [info, setInfo] = useState(Array<object>)
+  const number = useRef(0)
+  
   // for on load stuff
   async function onLoad() {
     const tempInfo = await CreateInfo()
@@ -17,13 +19,14 @@ export default function MainMap() {
 
   useEffect(() => { 
     onLoad()
+    number.current = 0
   }, [])
   
   useEffect(() => {
     function updateDimensions() {
       setDimensions({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight - 500
       })
     }
 
@@ -34,6 +37,7 @@ export default function MainMap() {
   }, [])
 
   useEffect(() => {
+    console.log(info.length)
     const canvas = canvasRef.current
 
     if (!canvas) return
@@ -45,10 +49,15 @@ export default function MainMap() {
     if (!info) return
 
     const animate = () => {
-      DrawFrame(canvas, ctx, dimensions, info)
+      DrawFrame(canvas, ctx, dimensions, info, number.current)
+      console.log('animated')
       animationRef.current = requestAnimationFrame(animate)
     }
 
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current)
+    }
+    
     animationRef.current = requestAnimationFrame(animate)
 
     return () => {
@@ -56,7 +65,7 @@ export default function MainMap() {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [dimensions])
+  }, [dimensions, info])
 
   return (
     <div>
@@ -64,6 +73,8 @@ export default function MainMap() {
         ref={canvasRef}
       >
       </canvas>
+      <button onClick={() => setInfo(prev => [...prev, {id: info.length}])}>Force Refresh</button>
+      <div>hey</div>
     </div>
   )
 }
