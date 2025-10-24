@@ -8,13 +8,16 @@ export default function MainMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef(0)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0})
+  const [mapDimensions, setMapDimensions] = useState({x: 25, y: 25})
   const [info, setInfo] = useState(Array<object>)
   const number = useRef(0)
   
   // for on load stuff
   async function onLoad() {
-    const tempInfo = await CreateInfo()
+    
+    const tempInfo = CreateInfo(mapDimensions.x, mapDimensions.y)
     setInfo(tempInfo)
+    console.log(tempInfo)
   }
 
   useEffect(() => { 
@@ -26,7 +29,7 @@ export default function MainMap() {
     function updateDimensions() {
       setDimensions({
         width: window.innerWidth,
-        height: window.innerHeight - 500
+        height: window.innerHeight
       })
     }
 
@@ -37,7 +40,6 @@ export default function MainMap() {
   }, [])
 
   useEffect(() => {
-    console.log(info.length)
     const canvas = canvasRef.current
 
     if (!canvas) return
@@ -49,7 +51,7 @@ export default function MainMap() {
     if (!info) return
 
     const animate = () => {
-      DrawFrame(canvas, ctx, dimensions, info, number.current)
+      DrawFrame(canvas, ctx, dimensions, info, number.current, mapDimensions)
       console.log('animated')
       animationRef.current = requestAnimationFrame(animate)
     }
@@ -73,8 +75,7 @@ export default function MainMap() {
         ref={canvasRef}
       >
       </canvas>
-      <button onClick={() => setInfo(prev => [...prev, {id: info.length}])}>Force Refresh</button>
-      <div>hey</div>
+
     </div>
   )
 }
