@@ -1,13 +1,24 @@
 'use client'
 
-import { useEffect, useRef, useState } from "react"
+import { use, useEffect, useRef, useState } from "react"
 import DrawFrame from "./drawFrame"
+import CreateInfo from "./createInfo"
 
 export default function MainMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef(0)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0})
+  const [info, setInfo] = useState(Array<object>)
+  // for on load stuff
+  async function onLoad() {
+    const tempInfo = await CreateInfo()
+    setInfo(tempInfo)
+  }
 
+  useEffect(() => { 
+    onLoad()
+  }, [])
+  
   useEffect(() => {
     function updateDimensions() {
       setDimensions({
@@ -31,9 +42,10 @@ export default function MainMap() {
 
     const ctx = canvas.getContext('2d')
     if (!ctx) return
+    if (!info) return
 
     const animate = () => {
-      DrawFrame(canvas, ctx, dimensions)
+      DrawFrame(canvas, ctx, dimensions, info)
       animationRef.current = requestAnimationFrame(animate)
     }
 
