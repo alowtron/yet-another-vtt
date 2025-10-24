@@ -10,7 +10,6 @@ export default function MainMap() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0})
   const [mapDimensions, setMapDimensions] = useState({x: 25, y: 25})
   const [info, setInfo] = useState(Array<object>)
-  const number = useRef(0)
   
   // for on load stuff
   async function onLoad() {
@@ -22,7 +21,6 @@ export default function MainMap() {
 
   useEffect(() => { 
     onLoad()
-    number.current = 0
   }, [])
   
   useEffect(() => {
@@ -51,7 +49,7 @@ export default function MainMap() {
     if (!info) return
 
     const animate = () => {
-      DrawFrame(canvas, ctx, dimensions, info, number.current, mapDimensions)
+      DrawFrame(canvas, ctx, dimensions, info, mapDimensions)
       console.log('animated')
       animationRef.current = requestAnimationFrame(animate)
     }

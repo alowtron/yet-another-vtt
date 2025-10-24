@@ -3,7 +3,6 @@ export default function DrawFrame(
   ctx: CanvasRenderingContext2D, 
   dimensions: {width: number, height: number},
   info: Array<object>,
-  number: number,
   mapDimensions: object,
   gridSize: number = 8  
 ) {
@@ -27,5 +26,4 @@ export default function DrawFrame(
       index++
     }
   }
-
 }
