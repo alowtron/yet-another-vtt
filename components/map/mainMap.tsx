@@ -15,9 +15,10 @@ export default function MainMap() {
   const [info, setInfo] = useState(Array<object>)
 
   //map movement
-
   const [zoom, setZoom] = useState(1)
-  const [offset, setOffset] = useState({ x: 0, y: 0})
+  const [offset, setOffset] = useState({ x: 0, y: 0 })
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
   
   // for on load stuff
   async function onLoad() {
@@ -71,6 +72,27 @@ export default function MainMap() {
     setOffset({ x: 0, y: 0 })
   }
 
+  const mouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    setIsDragging(true)
+    setDragStart({
+      x: e.clientX - offset.x,
+      y: e.clientY - offset.y
+    })
+  }
+
+  const mouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    if (isDragging) {
+      setOffset({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      })
+    }
+  }
+
+  const mouseUp = () => {
+    setIsDragging(false)
+  }
+
   // handles zoom stuff
   useEffect(() => {
     const canvas = canvasRef.current
@@ -118,6 +140,10 @@ export default function MainMap() {
     <div>
       <canvas
         ref={canvasRef}
+        onMouseDown={mouseDown}
+        onMouseMove={mouseMove}
+        onMouseUp={mouseUp}
+        onMouseLeave={mouseUp}
         onDoubleClick={doubleClick}
       >
       </canvas>
