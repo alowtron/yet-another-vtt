@@ -5,12 +5,14 @@ export default function DrawFrame(
   info: Array<object>,
   mapDimensions: object,
   zoom: number,
+  offset: { x: number, y: number} = { x: 0, y: 0},
   gridSize: number = 8  
 ) {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   ctx.save()
 
+  ctx.translate(offset.x, offset.y)
   ctx.scale(zoom, zoom)
 
   let startX = 0

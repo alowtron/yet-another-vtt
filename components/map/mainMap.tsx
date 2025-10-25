@@ -17,6 +17,7 @@ export default function MainMap() {
   //map movement
 
   const [zoom, setZoom] = useState(1)
+  const [offset, setOffset] = useState({ x: 0, y: 0})
   
   // for on load stuff
   async function onLoad() {
@@ -51,16 +52,18 @@ export default function MainMap() {
     if (!canvas) return
 
     const rect = canvas.getBoundingClientRect()
-    
-
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
 
     const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1
     const newZoom = Math.max(minZoom, Math.min(zoom * zoomFactor, maxZoom))
 
     const zoomRatio = newZoom / zoom
-
+    const newOffsetX = mouseX - zoomRatio * (mouseX - offset.x)
+    const newOffSetY = mouseY - zoomRatio * (mouseY - offset.y)
 
     setZoom(newZoom)
+    setOffset({ x: newOffsetX, y: newOffSetY})
   }
 
   // handles zoom stuff
@@ -75,6 +78,7 @@ export default function MainMap() {
       canvas.removeEventListener('wheel', handleWheelZoom)
     }
   })
+
   useEffect(() => {
     const canvas = canvasRef.current
 
@@ -87,7 +91,7 @@ export default function MainMap() {
     if (!info) return
 
     const animate = () => {
-      DrawFrame(canvas, ctx, dimensions, info, mapDimensions, zoom)
+      DrawFrame(canvas, ctx, dimensions, info, mapDimensions, zoom, offset)
       console.log('animated')
       animationRef.current = requestAnimationFrame(animate)
     }
@@ -103,7 +107,7 @@ export default function MainMap() {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [dimensions, info, zoom])
+  }, [dimensions, info, zoom, offset])
 
   return (
     <div>
