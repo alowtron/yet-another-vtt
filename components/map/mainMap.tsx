@@ -4,12 +4,19 @@ import { use, useEffect, useRef, useState } from "react"
 import DrawFrame from "./drawFrame"
 import CreateInfo from "./createInfo"
 
+const minZoom = 0.1
+const maxZoom = 10
+
 export default function MainMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef(0)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0})
-  const [mapDimensions, setMapDimensions] = useState({x: 25, y: 25})
+  const [mapDimensions, setMapDimensions] = useState({x: 45, y: 25})
   const [info, setInfo] = useState(Array<object>)
+
+  //map movement
+
+  const [zoom, setZoom] = useState(1)
   
   // for on load stuff
   async function onLoad() {
@@ -37,6 +44,37 @@ export default function MainMap() {
     return () => window.removeEventListener('resize', updateDimensions)
   }, [])
 
+  const handleWheelZoom = (e: WheelEvent) => {
+    e.preventDefault()
+    const canvas = canvasRef.current
+
+    if (!canvas) return
+
+    const rect = canvas.getBoundingClientRect()
+    
+
+
+    const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1
+    const newZoom = Math.max(minZoom, Math.min(zoom * zoomFactor, maxZoom))
+
+    const zoomRatio = newZoom / zoom
+
+
+    setZoom(newZoom)
+  }
+
+  // handles zoom stuff
+  useEffect(() => {
+    const canvas = canvasRef.current
+
+    if (!canvas) return
+
+    canvas.addEventListener('wheel', handleWheelZoom, { passive: false })
+
+    return () => {
+      canvas.removeEventListener('wheel', handleWheelZoom)
+    }
+  })
   useEffect(() => {
     const canvas = canvasRef.current
 
@@ -49,7 +87,7 @@ export default function MainMap() {
     if (!info) return
 
     const animate = () => {
-      DrawFrame(canvas, ctx, dimensions, info, mapDimensions)
+      DrawFrame(canvas, ctx, dimensions, info, mapDimensions, zoom)
       console.log('animated')
       animationRef.current = requestAnimationFrame(animate)
     }
@@ -65,7 +103,7 @@ export default function MainMap() {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [dimensions, info])
+  }, [dimensions, info, zoom])
 
   return (
     <div>

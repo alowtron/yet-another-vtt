@@ -4,9 +4,15 @@ export default function DrawFrame(
   dimensions: {width: number, height: number},
   info: Array<object>,
   mapDimensions: object,
+  zoom: number,
   gridSize: number = 8  
 ) {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+  ctx.save()
+
+  ctx.scale(zoom, zoom)
+
   let startX = 0
   let startY = 0
   let index = 0
@@ -26,4 +32,6 @@ export default function DrawFrame(
       index++
     }
   }
+
+  ctx.restore()
 }
