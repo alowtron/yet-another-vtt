@@ -3,15 +3,22 @@
 import { use, useEffect, useRef, useState } from "react"
 import DrawFrame from "./drawFrame"
 import CreateInfo from "./createInfo"
+import CreateLandMasses from "./createLandMasses"
 
 const minZoom = 0.1
 const maxZoom = 10
+
+
+
+const landMassPercentage = 25
+const outsideBorderForce = 5
+const continents = 3
 
 export default function MainMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef(0)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0})
-  const [mapDimensions, setMapDimensions] = useState({x: 45, y: 25})
+  const [mapDimensions, setMapDimensions] = useState({x: 100, y: 100})
   const [info, setInfo] = useState(Array<object>)
 
   //map movement
@@ -22,9 +29,10 @@ export default function MainMap() {
   
   // for on load stuff
   async function onLoad() {
-    
-    const tempInfo = CreateInfo(mapDimensions.x, mapDimensions.y)
-    setInfo(tempInfo)
+    const tempInfo = CreateInfo(landMassPercentage, mapDimensions.x, mapDimensions.y)
+    // setInfo(tempInfo)
+    const tempInfo2 = CreateLandMasses(tempInfo, mapDimensions.x, mapDimensions.y, outsideBorderForce, continents)
+    setInfo(tempInfo2)
     console.log(tempInfo)
   }
 

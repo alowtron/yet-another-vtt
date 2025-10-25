@@ -26,6 +26,9 @@ export default function DrawFrame(
       //@ts-ignore
       if (info[index].tileType == 'water') {
         ctx.fillStyle = 'blue'
+      //@ts-ignore
+      } else if (info[index].tileType == 'continent') {
+        ctx.fillStyle = 'red'
       } else {
         ctx.fillStyle = 'green'
       }
