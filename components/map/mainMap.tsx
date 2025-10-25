@@ -66,6 +66,11 @@ export default function MainMap() {
     setOffset({ x: newOffsetX, y: newOffSetY})
   }
 
+  const doubleClick = () => {
+    setZoom(1)
+    setOffset({ x: 0, y: 0 })
+  }
+
   // handles zoom stuff
   useEffect(() => {
     const canvas = canvasRef.current
@@ -113,6 +118,7 @@ export default function MainMap() {
     <div>
       <canvas
         ref={canvasRef}
+        onDoubleClick={doubleClick}
       >
       </canvas>
 
