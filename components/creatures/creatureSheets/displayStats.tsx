@@ -1,9 +1,16 @@
-export default function DisplayStats({stats}: {stats: Array<{
-  name: string,
-  modifier?: number,
-  stat?: number
-}>
-}) {
+interface DisplayStatsProps {
+  stats: Array<{
+    name: string,
+    modifier?: number,
+    stat?: number
+  }>,
+  onUpdate: (index: number, statInfo: any) => void
+}
+
+export default function DisplayStats({
+  stats,
+  onUpdate
+}: DisplayStatsProps) {
   return (
     <div>
       <label htmlFor="stats">
@@ -21,6 +28,7 @@ export default function DisplayStats({stats}: {stats: Array<{
             className="number one center"
             id='stats'
             value={stats[index].modifier}
+            onChange={(e) => {onUpdate(index, e.target.value)}}
           ></input>
         </div>
       ))}

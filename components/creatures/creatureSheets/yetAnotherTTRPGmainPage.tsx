@@ -96,6 +96,30 @@ export default function YetAnotherTTRPG({
     }))
   }
 
+  function setStatInfo(index: number, statInfo: any) {
+    console.log (`
+      index: ${index},
+      statInfo: ${statInfo}  
+    `)
+    
+    setInfo((prev: any) => {
+      const updatedStats = [...prev.stats]
+      updatedStats[index] = {
+        name: prev.stats[index].name,
+        modifier: statInfo
+      }
+    
+      return {
+        //@ts-ignore
+        ...prev,
+        //@ts-ignore
+        stats: updatedStats
+      }
+    })
+  
+    // setInfo()
+  }
+
   return (
     <div className="mainGrid">
       Yet another ttrpg
@@ -155,6 +179,7 @@ export default function YetAnotherTTRPG({
       </div>
       <DisplayStats
         stats={info.stats}
+        onUpdate={(index, statInfo) => {setStatInfo(index, statInfo)}}
       ></DisplayStats>
       {/* <div className="statGrid">
         <div className="eachStatGrid">
