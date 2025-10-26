@@ -3,6 +3,7 @@ import { useQuery } from "convex/react"
 import './yetAnother.css' // not sure if this import is working
 import { useEffect, useState } from "react"
 import AddSkill from "./addSkill"
+import DisplayStats from "./displayStats"
 
 interface YetAnotherTTRPGProps {
   creatureInfo: any,
@@ -24,12 +25,24 @@ export default function YetAnotherTTRPG({
     level: 1,
     skills: [],
     passiveSkills: [],
-    stats: {
-      physical: 3,
-      fortitude: 3,
-      intellect: 3,
-      charisma: 3,
-    }
+    stats: [
+      {
+        name: 'physical',
+        modifier: 3
+      },
+      {
+        name: 'fortitude',
+        modifier: 3
+      },
+      {
+        name: 'intellect',
+        modifier: 3
+      },
+      {
+        name: 'charisma',
+        modifier: 3
+      }
+    ]
   }
   const [info, setInfo] = useState(() => {
     return creatureInfo && Object.keys(creatureInfo).length > 0 ? creatureInfo : starterInfo
@@ -140,7 +153,10 @@ export default function YetAnotherTTRPG({
           </input>
         </div>
       </div>
-      <div className="statGrid">
+      <DisplayStats
+        stats={info.stats}
+      ></DisplayStats>
+      {/* <div className="statGrid">
         <div className="eachStatGrid">
           <div className="center">
             Physical
@@ -165,6 +181,7 @@ export default function YetAnotherTTRPG({
           </input>
           </div>
         </div>
+        
         <div className="eachStatGrid">
           <div className="center">
             Fortitude
@@ -234,7 +251,7 @@ export default function YetAnotherTTRPG({
           </input>
           </div>
         </div>
-      </div>
+      </div> */}
       <h2>
         Skills
       </h2>
