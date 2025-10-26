@@ -4,7 +4,7 @@ interface DisplayStatsProps {
     modifier?: number,
     stat?: number
   }>,
-  onUpdate: (index: number, statInfo: any) => void
+  onUpdate: (index: number, statInfo: number) => void
 }
 
 /**

@@ -96,7 +96,7 @@ export default function YetAnotherTTRPG({
     }))
   }
 
-  function setStatInfo(index: number, statInfo: any) {
+  function setStatInfo(index: number, statInfo: number) {
     console.log (`
       index: ${index},
       statInfo: ${statInfo}  
