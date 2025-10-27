@@ -68,9 +68,7 @@ export default function YetAnotherTTRPG({
         onUpdate(starterInfo)
       } else {
         onUpdate(info)
-        
       }
-      
     }
   }
 

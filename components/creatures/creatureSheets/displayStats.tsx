@@ -38,7 +38,7 @@ export default function DisplayStats({
             className="number one center"
             id='stats'
             value={stats[index].modifier}
-            onChange={(e) => {onUpdate(index, e.target.value)}}
+            onChange={(e) => {onUpdate(index, Number(e.target.value))}}
           ></input>
         </div>
       ))}
