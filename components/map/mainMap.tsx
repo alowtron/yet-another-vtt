@@ -30,7 +30,6 @@ export default function MainMap() {
   // for on load stuff
   async function onLoad() {
     const tempInfo = CreateInfo(landMassPercentage, mapDimensions.x, mapDimensions.y)
-    // setInfo(tempInfo)
     const tempInfo2 = CreateLandMasses(tempInfo, mapDimensions.x, mapDimensions.y, outsideBorderForce, continents)
     setInfo(tempInfo2)
     console.log(tempInfo)
