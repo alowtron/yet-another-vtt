@@ -76,11 +76,6 @@ export default function YetAnotherTTRPG({
     setInfo((prev: {skills: any}) => ({
       ...prev,
       skills: [...prev.skills,  skill]
-      // skills: [...prev.skills, {
-      //   name: 'temp',
-      //   actions: 3,
-      //   effect: "temp effect"
-      // }]
     }))
   }
 
