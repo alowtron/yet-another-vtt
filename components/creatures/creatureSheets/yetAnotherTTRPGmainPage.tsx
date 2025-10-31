@@ -109,8 +109,6 @@ export default function YetAnotherTTRPG({
         stats: updatedStats
       }
     })
-  
-    // setInfo()
   }
 
   return (
