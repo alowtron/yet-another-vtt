@@ -3,6 +3,7 @@ import { useQuery } from "convex/react"
 import './yetAnother.css' // not sure if this import is working
 import { useEffect, useState } from "react"
 import AddSkill from "./addSkill"
+import AddPassiveSkill from "./addPassiveSkill"
 import DisplayStats from "./displayStats"
 
 interface YetAnotherTTRPGProps {
@@ -47,7 +48,8 @@ export default function YetAnotherTTRPG({
   const [info, setInfo] = useState(() => {
     return creatureInfo && Object.keys(creatureInfo).length > 0 ? creatureInfo : starterInfo
   })
-  const [showAddSkill, setShowAddSkill]  = useState(true)
+  const [showAddSkill, setShowAddSkill] = useState(true)
+  const [showAddPassiveSkill, setShowAddPassiveSkill] = useState(true)
  
   console.log(info)
   useEffect(() => {
@@ -79,13 +81,10 @@ export default function YetAnotherTTRPG({
     }))
   }
 
-  function addPassiveSkill() {
+  function addPassiveSkill(passiveSkill: object) {
     setInfo((prev: {passiveSkills: any}) => ({
       ...prev,
-      passiveSkills: [...prev.passiveSkills, {
-        name: 'temp passive skill',
-        effect: 'temp passive skill effect'
-      }]
+      passiveSkills: [...prev.passiveSkills, passiveSkill]
     }))
   }
 
@@ -223,6 +222,12 @@ export default function YetAnotherTTRPG({
           )}
         </div>
       ))}
+      <br></br>
+      <AddPassiveSkill
+        show={showAddPassiveSkill}
+        onShowUpdate={(e) => setShowAddPassiveSkill(e)}
+        onUpdate={(skill) => addPassiveSkill(skill)}
+      ></AddPassiveSkill>
       
       <button
         onClick={addSkill}

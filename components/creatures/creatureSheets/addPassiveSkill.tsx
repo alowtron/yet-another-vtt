@@ -19,10 +19,41 @@ const passiveSkills = [
   }
 ]
 
-function AddPassiveSkill() {
+export default function AddPassiveSkill({
+  show,
+  onShowUpdate,
+  onUpdate
+}: addPassiveSkillProps) {
+  function addPassiveSkill(index: number) {
+    onShowUpdate(false)
+    console.log('addPassiveSkill')
+    console.log(passiveSkills[index])
+    onUpdate(passiveSkills[index])
+  }
+  if (!show) return null
   return (
     <div>
-      
+      {passiveSkills.map(({name, effect}, index) => (
+        <div key={index}>
+          Name: {name}
+          <br></br>
+          Effect: {effect}
+          <br></br>
+          <button
+            onClick={() => addPassiveSkill(index)}
+          >
+            Add Passive Skill
+          </button>
+          {index != passiveSkills.length - 1 ? (
+            <div>
+              <br></br>
+            </div>
+          ) : (
+            <div>
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   )
 }
