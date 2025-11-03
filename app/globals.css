@@ -1,16 +1,17 @@
-/* @import "tailwindcss";
+/* @import "tailwindcss"; */
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --slight-highlight: #00000010;
 }
 
-@theme inline {
+/* @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -18,7 +19,7 @@
     --foreground: #ededed;
   }
 }
-
+/*
 body {
   color: var(--foreground);
   background: var(--background);
@@ -27,4 +28,9 @@ body {
 
 button:hover {
   cursor: pointer;
+}
+
+.slightHighlight {
+  background-color: var(--slight-highlight);
+  border-radius: 0.5rem;
 }

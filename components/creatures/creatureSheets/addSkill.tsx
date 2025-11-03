@@ -74,7 +74,7 @@ export default function AddSkill({
   }
   if (!show) return null
   return (
-    <div>
+    <div className="slightHighlight">
       {skills.map(({name, actions, effect}, index) => (
         <div key={index}>
           Name: {name}

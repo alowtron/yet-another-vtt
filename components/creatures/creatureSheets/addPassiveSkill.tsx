@@ -32,7 +32,7 @@ export default function AddPassiveSkill({
   }
   if (!show) return null
   return (
-    <div>
+    <div className="slightHighlight">
       {passiveSkills.map(({name, effect}, index) => (
         <div key={index}>
           Name: {name}
