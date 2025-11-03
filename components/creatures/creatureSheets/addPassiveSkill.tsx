@@ -54,6 +54,12 @@ export default function AddPassiveSkill({
           )}
         </div>
       ))}
+      <br></br>
+      <button
+        onClick={() => onShowUpdate(false)}
+      >
+        Cancel
+      </button>
     </div>
   )
 }

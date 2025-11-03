@@ -98,6 +98,12 @@ export default function AddSkill({
           )}
         </div>
       ))}
+      <br></br>
+      <button
+        onClick={() => onShowUpdate(false)}
+      >
+        Cancel
+      </button>
     </div>
   )
 }

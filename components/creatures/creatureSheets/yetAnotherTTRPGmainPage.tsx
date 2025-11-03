@@ -48,8 +48,8 @@ export default function YetAnotherTTRPG({
   const [info, setInfo] = useState(() => {
     return creatureInfo && Object.keys(creatureInfo).length > 0 ? creatureInfo : starterInfo
   })
-  const [showAddSkill, setShowAddSkill] = useState(true)
-  const [showAddPassiveSkill, setShowAddPassiveSkill] = useState(true)
+  const [showAddSkill, setShowAddSkill] = useState(false)
+  const [showAddPassiveSkill, setShowAddPassiveSkill] = useState(false)
  
   console.log(info)
   useEffect(() => {
@@ -201,7 +201,16 @@ export default function YetAnotherTTRPG({
         onShowUpdate={(e) => setShowAddSkill(e)}
         onUpdate={(skill) => addSkill(skill)}
       ></AddSkill>
-
+      {!showAddSkill? (
+      <button
+        onClick={() => setShowAddSkill(true)}
+      >
+        addSkill
+      </button>
+      ) : (
+        <div>
+        </div>
+      )}
       <h2>
         Passive Skills
       </h2>
@@ -229,16 +238,18 @@ export default function YetAnotherTTRPG({
         onUpdate={(skill) => addPassiveSkill(skill)}
       ></AddPassiveSkill>
       
-      <button
-        onClick={addSkill}
-      >
-        addSkill
-      </button>
-      <button
-        onClick={addPassiveSkill}
+      {!showAddPassiveSkill ? (
+        <button
+        onClick={() => setShowAddPassiveSkill(true)}
       >
         addPassiveSkill
       </button>
+      ) : (
+        <div>
+        </div>
+      )}
+      
+      
       <button
         onClick={updateCreatureInfo}
       >
