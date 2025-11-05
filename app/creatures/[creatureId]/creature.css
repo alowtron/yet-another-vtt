@@ -46,6 +46,12 @@
   border-radius: 1rem;
 }
 
+/* part of character sheet select */
+
+.partGrid {
+  display: grid;
+  grid-template-columns: auto auto auto ;
+}
 
 /* not sure if this belongs here */
 

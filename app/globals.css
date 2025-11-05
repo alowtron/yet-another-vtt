@@ -34,3 +34,7 @@ button:hover {
   background-color: var(--slight-highlight);
   border-radius: 0.5rem;
 }
+
+.cursorPointer {
+  cursor: pointer;
+}

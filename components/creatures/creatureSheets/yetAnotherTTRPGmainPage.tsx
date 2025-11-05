@@ -12,14 +12,7 @@ interface YetAnotherTTRPGProps {
   onUpdate: (info: object) => void
 }
 
-
-
-export default function YetAnotherTTRPG({
-  creatureInfo,
-  userId,
-  onUpdate
-}: YetAnotherTTRPGProps) {
-  const starterInfo = {
+const starterInfo = {
     maxHP: 10,
     currentHP: 10,
     race: 'null',
@@ -45,11 +38,20 @@ export default function YetAnotherTTRPG({
       }
     ]
   }
+
+export default function YetAnotherTTRPG({
+  creatureInfo,
+  userId,
+  onUpdate
+}: YetAnotherTTRPGProps) {
+  
   const [info, setInfo] = useState(() => {
     return creatureInfo && Object.keys(creatureInfo).length > 0 ? creatureInfo : starterInfo
   })
   const [showAddSkill, setShowAddSkill] = useState(false)
   const [showAddPassiveSkill, setShowAddPassiveSkill] = useState(false)
+
+  const [partToShow, setPartToShow] = useState('abilities')
  
   console.log(info)
   useEffect(() => {
@@ -167,87 +169,116 @@ export default function YetAnotherTTRPG({
           </input>
         </div>
       </div>
-      <DisplayStats
-        stats={info.stats}
-        onUpdate={(index, statInfo) => {setStatInfo(index, statInfo)}}
-      ></DisplayStats>
-      <h2>
-        Skills
-      </h2>
-      <div>
-      {info.skills.map(({name, actions, effect}: {name: string, actions: number, effect: string}, index: number) => (
-      <div key={index}>
-        Skill: {name}
-        <div>
-          Actions: {actions}
+      <div className="partGrid">
+        <div onClick={() => setPartToShow('abilities')} className="cursorPointer material-symbols-outlined center">
+            Star
         </div>
-        <div>
-          Effect: {effect}
+        <div onClick={() => setPartToShow('skills')} className="cursorPointer material-symbols-outlined center">
+          Stacks
         </div>
-        {index != info.skills.length - 1 ? (
-          <div>
-            <br></br>
-          </div>
-        ) : (
-          <div>
-          </div>
-        )}
+        <div onClick={() => setPartToShow('passiveSkills')} className="cursorPointer material-symbols-outlined center">
+          Alarm_Add
+        </div>
       </div>
-      ))}
-      </div>
-      <br></br>
-      <AddSkill
-        show={showAddSkill}
-        onShowUpdate={(e) => setShowAddSkill(e)}
-        onUpdate={(skill) => addSkill(skill)}
-      ></AddSkill>
-      {!showAddSkill? (
-      <button
-        onClick={() => setShowAddSkill(true)}
-      >
-        addSkill
-      </button>
-      ) : (
+      {partToShow == 'abilities' ? (
         <div>
+          <DisplayStats
+            stats={info.stats}
+            onUpdate={(index, statInfo) => {setStatInfo(index, statInfo)}}
+          ></DisplayStats>
         </div>
-      )}
-      <h2>
-        Passive Skills
-      </h2>
-      {info.passiveSkills.map(({name, effect}: {name: string, effect: string}, index: number) => (
-        <div key={index}>
-          Skill: {name}
+      ) : partToShow == 'skills' ? (
+        <div>
+          <h2>
+            Skills
+          </h2>
           <div>
-            Effect: {effect}
-          </div>
-          {index != info.passiveSkills.length - 1 ? (
+          {info.skills.map(({name, actions, effect}: {name: string, actions: number, effect: string}, index: number) => (
+          <div key={index}>
+            Skill: {name}
             <div>
-              <br></br>
+              Actions: {actions}
             </div>
+            <div>
+              Effect: {effect}
+            </div>
+            {index != info.skills.length - 1 ? (
+              <div>
+                <br></br>
+              </div>
+            ) : (
+              <div>
+              </div>
+            )}
+          </div>
+          ))}
+          </div>
+          <br></br>
+          <AddSkill
+            show={showAddSkill}
+            onShowUpdate={(e) => setShowAddSkill(e)}
+            onUpdate={(skill) => addSkill(skill)}
+          ></AddSkill>
+          {!showAddSkill? (
+          <button
+            onClick={() => setShowAddSkill(true)}
+          >
+            addSkill
+          </button>
           ) : (
             <div>
+            </div>
+          )}
+        </div> 
+      ) : partToShow == 'passiveSkills' ? (
+        <div>
+          <h2>
+            Passive Skills
+          </h2>
+          {info.passiveSkills.map(({name, effect}: {name: string, effect: string}, index: number) => (
+            <div key={index}>
+              Skill: {name}
+              <div>
+                Effect: {effect}
+              </div>
+              {index != info.passiveSkills.length - 1 ? (
+                <div>
+                  <br></br>
+                </div>
+              ) : (
+                <div>
 
+                </div>
+              )}
+            </div>
+          ))}
+          <br></br>
+          <AddPassiveSkill
+            show={showAddPassiveSkill}
+            onShowUpdate={(e) => setShowAddPassiveSkill(e)}
+            onUpdate={(skill) => addPassiveSkill(skill)}
+          ></AddPassiveSkill>
+          
+          {!showAddPassiveSkill ? (
+            <button
+            onClick={() => setShowAddPassiveSkill(true)}
+          >
+            addPassiveSkill
+          </button>
+          ) : (
+            <div>
             </div>
           )}
         </div>
-      ))}
-      <br></br>
-      <AddPassiveSkill
-        show={showAddPassiveSkill}
-        onShowUpdate={(e) => setShowAddPassiveSkill(e)}
-        onUpdate={(skill) => addPassiveSkill(skill)}
-      ></AddPassiveSkill>
-      
-      {!showAddPassiveSkill ? (
-        <button
-        onClick={() => setShowAddPassiveSkill(true)}
-      >
-        addPassiveSkill
-      </button>
       ) : (
         <div>
+
         </div>
-      )}
+      ) }
+      
+      
+      
+      
       
       
       <button
