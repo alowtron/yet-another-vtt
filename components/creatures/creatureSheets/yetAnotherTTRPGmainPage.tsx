@@ -170,15 +170,18 @@ export default function YetAnotherTTRPG({
         </div>
       </div>
       <div className="partGrid">
-        <div onClick={() => setPartToShow('abilities')} className="cursorPointer material-symbols-outlined center">
-            Star
-        </div>
-        <div onClick={() => setPartToShow('skills')} className="cursorPointer material-symbols-outlined center">
-          Stacks
-        </div>
-        <div onClick={() => setPartToShow('passiveSkills')} className="cursorPointer material-symbols-outlined center">
-          Alarm_Add
-        </div>
+        <button onClick={() => setPartToShow('abilities')} className="cursorPointer">
+            Stats
+        </button>
+        <button onClick={() => setPartToShow('skills')} className="cursorPointer">
+          Skills
+        </button>
+        <button onClick={() => setPartToShow('passiveSkills')} className="cursorPointer">
+          Passives
+        </button>
+        <button className="">
+          Inventory
+        </button>
       </div>
       {partToShow == 'abilities' ? (
         <div>
