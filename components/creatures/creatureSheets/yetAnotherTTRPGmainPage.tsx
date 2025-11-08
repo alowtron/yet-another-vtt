@@ -179,7 +179,7 @@ export default function YetAnotherTTRPG({
         <button onClick={() => setPartToShow('passiveSkills')} className="cursorPointer">
           Passives
         </button>
-        <button className="">
+        <button onClick={() => setPartToShow('inventory')} className="">
           Inventory
         </button>
       </div>
