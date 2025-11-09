@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import AddSkill from "./addSkill"
 import AddPassiveSkill from "./addPassiveSkill"
 import DisplayStats from "./displayStats"
+import DisplayInventory from "./inventory"
 
 interface YetAnotherTTRPGProps {
   creatureInfo: any,
@@ -19,6 +20,16 @@ const starterInfo = {
     level: 1,
     skills: [],
     passiveSkills: [],
+    inventory: [
+      {
+        name: 'backpack',
+        weight: 1
+      },
+      {
+        name: 'bread',
+        weight: 0.1
+      }
+    ],
     stats: [
       {
         name: 'physical',
@@ -273,11 +284,17 @@ export default function YetAnotherTTRPG({
             </div>
           )}
         </div>
+      ) : partToShow == 'inventory' ?  (
+        <div>
+          <DisplayInventory
+            inventory={info.inventory}
+          ></DisplayInventory>
+        </div>
       ) : (
         <div>
 
         </div>
-      ) }
+      )}
       
       
       
