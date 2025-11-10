@@ -94,6 +94,13 @@ export default function YetAnotherTTRPG({
     }))
   }
 
+  function addItem(item: object) {
+    setInfo((prev: {inventory: any}) => ({
+      ...prev,
+      inventory: [...prev.inventory, item]
+    }))
+  }
+
   function addPassiveSkill(passiveSkill: object) {
     setInfo((prev: {passiveSkills: any}) => ({
       ...prev,
@@ -288,6 +295,7 @@ export default function YetAnotherTTRPG({
         <div>
           <DisplayInventory
             inventory={info.inventory}
+            onAdd={(item) => addItem(item)}
           ></DisplayInventory>
         </div>
       ) : (
