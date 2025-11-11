@@ -150,7 +150,6 @@ export default function YetAnotherTTRPG({
                 maxHP: Number(e.target.value),
               }))
             }
-            onBlur={updateCreatureInfo}
           >
           </input>
           /
@@ -164,7 +163,6 @@ export default function YetAnotherTTRPG({
                 currentHP: Number(e.target.value),
               }))
             }
-            onBlur={updateCreatureInfo}
           >
           </input>
         </div>
@@ -182,7 +180,6 @@ export default function YetAnotherTTRPG({
                 race: e.target.value
               }))
             }
-            onBlur={updateCreatureInfo}
           >
           </input>
         </div>
@@ -198,7 +195,6 @@ export default function YetAnotherTTRPG({
                 level: Number(e.target.value),
               }))
             }
-            onBlur={updateCreatureInfo}
           >
           </input>
         </div>
@@ -360,12 +356,6 @@ export default function YetAnotherTTRPG({
 
         </div>
       )}
-      
-      
-      
-      
-      
-      
       <button
         onClick={updateCreatureInfo}
       >
