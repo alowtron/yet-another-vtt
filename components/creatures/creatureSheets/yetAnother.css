@@ -12,6 +12,11 @@
   grid-template-columns: auto auto auto;
 }
 
+.damageReductionGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
 
 
 

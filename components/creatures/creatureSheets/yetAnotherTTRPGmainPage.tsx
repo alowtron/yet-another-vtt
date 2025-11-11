@@ -18,6 +18,8 @@ const starterInfo = {
     currentHP: 10,
     race: 'null',
     level: 1,
+    physicalDR: 0,
+    magicalDR: 0,
     skills: [],
     passiveSkills: [],
     inventory: [
@@ -201,14 +203,55 @@ export default function YetAnotherTTRPG({
           </input>
         </div>
       </div>
+      <div className="damageReductionGrid">
+        <div>
+          Damage Reduction
+        </div>
+        <div>
+          <label
+            htmlFor="physical"
+          >
+            Physical: 
+          </label>
+          <input 
+            className="number"
+            id="physical"
+            value={info.physicalDR}
+            onChange={(e) =>
+              setInfo((prev: object) => ({
+                ...prev,
+                physicalDR: Number(e.target.value)
+              }))
+            }
+          ></input>
+        </div>
+        <div>
+          <label
+            htmlFor="magical"
+          >
+            Magical: 
+          </label>
+          <input 
+            className="number"
+            id="magical"
+            value={info.magicalDR}
+            onChange={(e) =>
+              setInfo((prev: object) => ({
+                ...prev,
+                magicalDR: Number(e.target.value)
+              }))
+            }
+          ></input>
+        </div>
+      </div>
       <div className="partGrid">
-        <button onClick={() => setPartToShow('abilities')} className="cursorPointer">
+        <button onClick={() => setPartToShow('abilities')} className="">
             Stats
         </button>
-        <button onClick={() => setPartToShow('skills')} className="cursorPointer">
+        <button onClick={() => setPartToShow('skills')} className="">
           Skills
         </button>
-        <button onClick={() => setPartToShow('passiveSkills')} className="cursorPointer">
+        <button onClick={() => setPartToShow('passiveSkills')} className="">
           Passives
         </button>
         <button onClick={() => setPartToShow('inventory')} className="">
