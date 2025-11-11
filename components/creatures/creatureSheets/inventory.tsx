@@ -17,7 +17,6 @@ export default function DisplayInventory({
   async function addCustomItem(formData: FormData) {
     const name = formData.get('name')
     const weight = formData.get('weight')
-    console.log('formssss' + name + weight)
     if (name && weight) {
       onAdd({name: name, weight: weight})
     }
@@ -52,7 +51,6 @@ export default function DisplayInventory({
       ) : (
         <div>
           <button onClick={() => setShowAddCustom(true)}>Add Custom Item</button>
-          
         </div>
       )}
     </div>

@@ -17,7 +17,6 @@ interface DisplayStatsProps {
  * @param {() => void} onUpdate, pass in a stat you want to be able to change, for dnd this would be the stat, not the modifier and the modifier is calculated off the stat.
  * @returns a div of html displaying anything along with inputs to change stuff.
  */
-
 export default function DisplayStats({
   stats,
   onUpdate

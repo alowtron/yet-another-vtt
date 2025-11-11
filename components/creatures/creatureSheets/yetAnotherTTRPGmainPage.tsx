@@ -167,8 +167,22 @@ export default function YetAnotherTTRPG({
           </input>
         </div>
         <div>
-          Race:
-          {info.race}
+          <label htmlFor="race">
+            Race:
+          </label>
+          <input 
+            className=""
+            id="race"
+            value={info.race}
+            onChange={(e) => 
+              setInfo((prev: object) => ({
+                ...prev,
+                race: e.target.value
+              }))
+            }
+            onBlur={updateCreatureInfo}
+          >
+          </input>
         </div>
         <div>
           Level:
