@@ -5,12 +5,14 @@ interface DisplayInventoryProps {
     name: string,
     weight?: number
   }>,
-  onAdd: (item: object) => void
+  onAdd: (item: object) => void,
+  onRemove: (index: number) => void
 }
 
 export default function DisplayInventory({
   inventory,
-  onAdd
+  onAdd,
+  onRemove
 }: DisplayInventoryProps) {
   const [showAddCustom, setShowAddCustom] = useState(false)
 
@@ -30,6 +32,9 @@ export default function DisplayInventory({
         <div key={index}>
           <div>
             <b>{name}:</b> {inventory[index].weight} pounds
+            <button onClick={() => onRemove(index)}>
+              Remove Item
+            </button>
           </div>
         </div>
       ))}

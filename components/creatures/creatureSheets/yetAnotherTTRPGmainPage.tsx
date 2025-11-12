@@ -103,6 +103,16 @@ export default function YetAnotherTTRPG({
     }))
   }
 
+  function removeItem(index: number) {
+    setInfo((prev: {inventory: any[]}) => ({
+      ...prev,
+      inventory: [
+        ...prev.inventory.slice(0, index),
+        ...prev.inventory.slice(index + 1)
+      ]
+    }))
+  }
+
   function addPassiveSkill(passiveSkill: object) {
     setInfo((prev: {passiveSkills: any}) => ({
       ...prev,
@@ -349,6 +359,7 @@ export default function YetAnotherTTRPG({
           <DisplayInventory
             inventory={info.inventory}
             onAdd={(item) => addItem(item)}
+            onRemove={(index) => removeItem(index)}
           ></DisplayInventory>
         </div>
       ) : (
