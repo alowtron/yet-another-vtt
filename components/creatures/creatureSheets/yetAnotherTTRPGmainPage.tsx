@@ -103,6 +103,15 @@ export default function YetAnotherTTRPG({
     }))
   }
 
+  function itemAmountUpdate(index: number, amount: number) {
+    setInfo((prev: {inventory: any}) => ({
+      ...prev,
+      inventory: prev.inventory.map((item: object, i: number) => 
+        i == index ? { ...item, amount: amount } : item
+      )
+    }))
+  }
+
   function removeItem(index: number) {
     setInfo((prev: {inventory: any[]}) => ({
       ...prev,
@@ -360,6 +369,7 @@ export default function YetAnotherTTRPG({
             inventory={info.inventory}
             onAdd={(item) => addItem(item)}
             onRemove={(index) => removeItem(index)}
+            onAmountUpdate={(index, amount) => itemAmountUpdate(index, amount)}
           ></DisplayInventory>
         </div>
       ) : (

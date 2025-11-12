@@ -3,16 +3,19 @@ import { useState } from "react"
 interface DisplayInventoryProps {
   inventory: Array<{
     name: string,
-    weight?: number
+    weight?: number,
+    amount?: number,
   }>,
   onAdd: (item: object) => void,
-  onRemove: (index: number) => void
+  onRemove: (index: number) => void,
+  onAmountUpdate: (index: number, amount: number) => void,
 }
 
 export default function DisplayInventory({
   inventory,
   onAdd,
-  onRemove
+  onRemove,
+  onAmountUpdate,
 }: DisplayInventoryProps) {
   const [showAddCustom, setShowAddCustom] = useState(false)
 
@@ -32,6 +35,23 @@ export default function DisplayInventory({
         <div key={index}>
           <div>
             <b>{name}:</b> {inventory[index].weight} pounds
+            {inventory[index].amount ? (
+              <div>
+                <label htmlFor="amount">
+                  Amount: 
+                </label>
+                <input
+                  type="number"
+                  id="amount"
+                  value={inventory[index].amount}
+                  onChange={(e) => {onAmountUpdate(index, Number(e.target.value))}}
+                >
+                </input>
+              </div>
+            ) : (
+              <div>
+              </div>
+            )}
             <button onClick={() => onRemove(index)}>
               Remove Item
             </button>
