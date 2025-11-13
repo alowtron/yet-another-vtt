@@ -17,6 +17,7 @@ const starterInfo = {
     maxHP: 10,
     currentHP: 10,
     race: 'null',
+    speed: 20,
     level: 1,
     physicalDR: 0,
     magicalDR: 0,
@@ -190,13 +191,30 @@ export default function YetAnotherTTRPG({
             Race:
           </label>
           <input 
-            className=""
+            className="gridText"
             id="race"
             value={info.race}
             onChange={(e) => 
               setInfo((prev: object) => ({
                 ...prev,
                 race: e.target.value
+              }))
+            }
+          >
+          </input>
+        </div>
+        <div>
+          <label htmlFor="speed">
+            Speed:  
+          </label>
+          <input
+            className="gridText"
+            id="speed"
+            value={info.speed}
+            onChange={(e) =>
+              setInfo((prev: object) => ({
+                ...prev,
+                speed: e.target.value
               }))
             }
           >
@@ -261,7 +279,7 @@ export default function YetAnotherTTRPG({
       </div>
       <div className="partGrid">
         <button onClick={() => setPartToShow('abilities')} className="">
-            Stats
+          Stats
         </button>
         <button onClick={() => setPartToShow('skills')} className="">
           Skills

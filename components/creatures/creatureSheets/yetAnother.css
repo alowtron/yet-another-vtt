@@ -9,10 +9,14 @@
 
 .HPNameLevel {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .damageReductionGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.gridText {
+  width: 5.25rem;
 }
