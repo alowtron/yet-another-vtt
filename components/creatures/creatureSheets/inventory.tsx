@@ -31,6 +31,7 @@ export default function DisplayInventory({
   
   return (
     <div>
+      <br></br>
       {inventory.map(({name}: {name: string}, index: number) => (
         <div key={index}>
           <div>
@@ -56,6 +57,7 @@ export default function DisplayInventory({
               Remove Item
             </button>
           </div>
+          <br></br>
         </div>
       ))}
       {showAddCustom ? (
