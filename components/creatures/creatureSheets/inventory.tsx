@@ -31,7 +31,9 @@ export default function DisplayInventory({
   
   return (
     <div>
-      <br></br>
+      <h2>
+        Inventory
+      </h2>
       {inventory.map(({name}: {name: string}, index: number) => (
         <div key={index}>
           <div>
