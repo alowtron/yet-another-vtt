@@ -22,10 +22,10 @@ export default function DisplayInventory({
   async function addCustomItem(formData: FormData) {
     const name = formData.get('name')
     const weight = formData.get('weight')
+    const amount = formData.get('amount')
     if (name && weight) {
-      onAdd({name: name, weight: weight})
+      onAdd({name: name, weight: weight, amount: amount})
     }
-    
     setShowAddCustom(false)
   } 
   
@@ -68,6 +68,8 @@ export default function DisplayInventory({
             Name:<input id="newItem" name="name" type="text"></input>
             <br></br>
             Weight:<input id="newItem" name="weight" type="number"></input>
+            <br></br>
+            Amount:<input id="newItem" name="amount" defaultValue={1} type="number"></input>
             <br></br>
             <button type='submit'>Add Item</button>
             <button onClick={() => setShowAddCustom(false)}>Cancel</button>
