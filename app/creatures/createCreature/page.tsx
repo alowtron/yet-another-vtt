@@ -80,12 +80,14 @@ export default function CreateCreature() {
 
     if (type == 'tank') {
       creationInfo.maxHP = 12
+      creationInfo.currentHP = 12
       creationInfo.race = 'dwarf'
+      addCreatureFunction(creationInfo, 'tank')
     } else if (type == 'fighter') {
 
     }
 
-    addCreatureFunction(creationInfo, 'tank')
+    
   }
 
   return (
