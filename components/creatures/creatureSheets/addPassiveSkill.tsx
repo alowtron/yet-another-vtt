@@ -16,6 +16,10 @@ const passiveSkills = [
   {
     name: 'Tough Skin',
     effect: '+1 physical and magical damage resist.'
+  },
+  {
+    name: 'Friendly',
+    effect: 'When making a Charisma check with a creature that is friendly with you, you may  reroll any one’s that you rolled.'
   }
 ]
 
