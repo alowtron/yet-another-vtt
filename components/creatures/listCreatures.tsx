@@ -11,10 +11,12 @@ export default function ListCreatures() {
 
   return (
     <div>
-      {creatures?.map(({ creatureName, _id }, index) => (
-        <div key={index}>
-          <Link href={`/creatures/${_id}`}>
-            {creatureName}
+      {creatures?.map(({ creatureName, creatureType, _id }, index) => (
+        <div key={index} className="nameList">
+          <Link href={`/creatures/${_id}`} className="nameListItem">
+            Name: {creatureName}
+            <br></br>
+            Creature Type: {creatureType}
           </Link>
         </div>
       ))} 

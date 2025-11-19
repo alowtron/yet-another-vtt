@@ -69,6 +69,19 @@
   min-width: 0.5rem;
   max-width: 0.5rem;
 }
+.nameList {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.nameListItem {
+  color: var(--foreground);
+  text-decoration: none;
+}
+.nameListItem:hover {
+  /* color: var(--foreground-highlight); */
+  font-weight: bold;
+}
 
 button {
   border-radius: 0.5rem;
