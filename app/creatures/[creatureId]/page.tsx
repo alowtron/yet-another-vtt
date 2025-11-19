@@ -5,7 +5,7 @@ import YetAnotherTTRPG from "@/components/creatures/creatureSheets/yetAnotherTTR
 import { use, useRef, useEffect } from "react"
 import { useMutation, useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
-import './creature.css'
+import '../creature.css'
 import CreatureName from "@/components/creatures/creatureName"
 
 interface CreatureId {

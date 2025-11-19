@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { useRouter } from "next/navigation"
+import '../creature.css'
 
 const creatureTypeToSelect = [
   {
@@ -194,7 +195,7 @@ export default function CreateCreature() {
   }
 
   return (
-    <div>
+    <div className="mainPageContainer">
       Create A creature
       {creatureType == 'yet_another_ttrpg' ? (
         <div>
