@@ -1,15 +1,16 @@
 'use client'
 
-import { useMutation } from "convex/react"
-import { api } from "@/convex/_generated/api"
-import { useAuth } from "@clerk/clerk-react"
+// import { useMutation } from "convex/react"
+// import { api } from "@/convex/_generated/api"
+// import { useAuth } from "@clerk/clerk-react"
 import { useRouter } from "next/navigation"
 import ListCreatures from "@/components/creatures/listCreatures"
 import './creature.css'
 
 export default function Creatures() {
-  const addCreature = useMutation(api.creatures.addCreature)
-  const { userId } = useAuth()
+  // const addCreature = useMutation(api.creatures.addCreature)
+  
+  // const { userId } = useAuth()
   const router = useRouter()
 
   

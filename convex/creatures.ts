@@ -34,6 +34,24 @@ export const getUserCreatureList = query({
   }
 })
 
+export const deleteUserCreature = mutation({
+  args: {
+    userId: v.string(),
+    _id: v.string()
+  },
+  handler: async (ctx, args) => {
+    const creature = await ctx.db
+      .query("creatures")
+      .filter((q) => q.eq(q.field("_id"), args._id))
+      .filter((q) => q.eq(q.field("userId"), args.userId))
+      .first()
+    if (!creature || creature.userId !== args.userId) {
+      throw new Error("creature not found or userId mismatch")
+    }
+    await ctx.db.delete(creature._id)
+  }
+})
+
 export const getUserCreature = query({
   args: {
     userId: v.string(),
