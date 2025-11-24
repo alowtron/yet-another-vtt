@@ -14,13 +14,17 @@ export default function ListCreatures() {
   return (
     <div>
       {creatures?.map(({ creatureName, creatureType, _id }, index) => (
-        <div key={index} className="nameList">
+        <div key={index} className="nameList showOnHover">
           <Link href={`/creatures/${_id}`} className="nameListItem">
             Name: {creatureName}
             <br></br>
             Creature Type: {creatureType}
           </Link>
-          <button onClick={() => deleteCreature({userId: userId || "", _id: _id})}>
+          <br></br>
+          <button 
+            className="showOnHoverObject"
+            onClick={() => deleteCreature({userId: userId || "", _id: _id})}
+          >
             delete creature
           </button>
         </div>

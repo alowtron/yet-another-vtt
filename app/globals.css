@@ -40,3 +40,16 @@ button:hover {
 .cursorPointer {
   cursor: pointer;
 }
+
+.showOnHover .showOnHoverObject{
+  /* visibility: hidden; */
+  opacity: 0;
+
+}
+
+.showOnHover:hover .showOnHoverObject{
+  /* visibility: visible; */
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+}

@@ -69,10 +69,10 @@
   min-width: 0.5rem;
   max-width: 0.5rem;
 }
-.nameList {
+/* .nameList {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-}
+} */
 
 .nameListItem {
   color: var(--foreground);
