@@ -6,6 +6,7 @@
 import { useRouter } from "next/navigation"
 import ListCreatures from "@/components/creatures/listCreatures"
 import './creature.css'
+import Header from "@/components/header"
 
 export default function Creatures() {
   // const addCreature = useMutation(api.creatures.addCreature)
@@ -16,6 +17,9 @@ export default function Creatures() {
   
   return (
     <div className="mainPageContainer">
+      <Header>
+        
+      </Header>
       Creature page
       <button onClick={() => router.push('./creatures/createCreature')}>Add creature</button>
       <ListCreatures>

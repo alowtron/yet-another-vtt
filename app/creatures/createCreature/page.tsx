@@ -190,8 +190,6 @@ export default function CreateCreature() {
       ]
       addCreatureFunction(creationInfo, type)
     }
-
-    
   }
 
   return (
