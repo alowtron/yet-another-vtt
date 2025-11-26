@@ -7,7 +7,9 @@ export default function Header() {
       <Link href="./">
         Home
       </Link>
-      
+      <Link href="./creatures">
+        Creatures
+      </Link>
       <UserButton />
     </header>
   )

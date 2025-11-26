@@ -11,10 +11,6 @@ const creatureTypeToSelect = [
   {
     name: 'YetAnotherTTRPG',
     value: 'yet_another_ttrpg'
-  },
-  {
-    name: 'example, do not click',
-    value: ''
   }
 ]
 
@@ -216,7 +212,7 @@ export default function CreateCreature() {
                 Weapons
               </button>
               <button>
-                Magic
+                Magic (not implemented)
               </button>
             </div>
           ): creationPart == 'weapons' ? (
